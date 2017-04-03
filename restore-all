@@ -14,7 +14,7 @@ BACKUP_PATH=/var/lib/vz/dump
 BACKUP_EXT=tar.lzo
 
 # Do not change
-SEARCH_PATH=$BACKUP_PATH/vzdump-openvz-*.$BACKUP_EXT
+SEARCH_PATH=$BACKUP_PATH/vzdump-lxc-*.$BACKUP_EXT
 
 # Check dir exists
 if [ ! -d $BACKUP_PATH ]; then
@@ -45,5 +45,5 @@ done
 for I in ${!FILE_VIMS[*]}
 do
   echo "Restoring $I with ${FILE_VIMS[$I]}..."
-  vzrestore ${FILE_VIMS[$I]} $I
+  pct restore $I ${FILE_VIMS[$I]}
 done
